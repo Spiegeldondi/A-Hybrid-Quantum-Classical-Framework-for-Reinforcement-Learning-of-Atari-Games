@@ -1,3 +1,4 @@
+import os
 import argparse
 
 def is_valid_id(s):
@@ -37,19 +38,3 @@ def parse_arguments():
         parser.error('Bottleneck layer not sensible in quantum model')
 
     return args
-
-# output_path = args.path
-# rnd_seed = args.seed
-# run_id = args.id 
-# model = args.model
-# bottleneck = args.bottleneck
-# activation = args.activation
-# lr1 = args.lr1
-# lr2 = args.lr2
-# lr3 = args.lr3
-# lr4 = args.lr4
-# lr5 = args.lr5
-# lr6 = args.lr6  # This will be None for classic model
-# n_layers = args.n_layers
-# n_qubits = args.n_qubits
-# scaling = args.scaling
