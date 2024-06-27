@@ -64,15 +64,16 @@ class ReUploadingPQC(tf.keras.layers.Layer):
         by the ControlledPQC.
     """
 
-    def __init__(self, qubits, n_layers, observables, name="re-uploading_PQC"):
+    def __init__(self, qubits, n_layers, observables, seed, name="re-uploading_PQC"):
         super(ReUploadingPQC, self).__init__(name=name)
         self.n_layers = n_layers
         self.n_qubits = len(qubits)
+        self.seed = seed
 
         circuit, theta_symbols, input_symbols = generate_circuit(qubits, n_layers)
         
         q_delta = 0.01
-        theta_init = tf.random_normal_initializer(mean=0.0, stddev=q_delta*np.pi, seed=rnd_seed)
+        theta_init = tf.random_normal_initializer(mean=0.0, stddev=q_delta*np.pi, seed=self.seed)
         self.theta = tf.Variable(
             initial_value=theta_init(shape=(1, len(theta_symbols)), dtype="float32"),
             trainable=True, name="thetas"
