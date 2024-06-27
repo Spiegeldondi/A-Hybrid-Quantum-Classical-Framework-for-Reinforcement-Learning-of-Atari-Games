@@ -10,6 +10,7 @@ import numpy as np
 import tensorflow as tf
 import tensorflow_quantum as tfq
 
+
 def one_qubit_rotation(qubit, symbols):
     """
     Returns Cirq gates that apply a rotation of the bloch sphere about the X,
@@ -19,6 +20,7 @@ def one_qubit_rotation(qubit, symbols):
             cirq.ry(symbols[1])(qubit),
             cirq.rz(symbols[2])(qubit)]
 
+
 def entangling_layer(qubits):
     """
     Returns a layer of CZ entangling gates on `qubits` (arranged in a circular topology).
@@ -26,6 +28,7 @@ def entangling_layer(qubits):
     cz_ops = [cirq.CZ(q0, q1) for q0, q1 in zip(qubits, qubits[1:])]
     cz_ops += ([cirq.CZ(qubits[0], qubits[-1])] if len(qubits) != 2 else [])
     return cz_ops
+
 
 def generate_circuit(qubits, n_layers):
     """Prepares a data re-uploading circuit on `qubits` with `n_layers` layers."""
@@ -44,15 +47,19 @@ def generate_circuit(qubits, n_layers):
     circuit = cirq.Circuit()
     for l in range(n_layers):
         # Variational layer
-        circuit += cirq.Circuit(one_qubit_rotation(q, params[l, i]) for i, q in enumerate(qubits))
+        circuit += cirq.Circuit(one_qubit_rotation(q,
+                                params[l, i]) for i, q in enumerate(qubits))
         circuit += entangling_layer(qubits)
         # Encoding layer
-        circuit += cirq.Circuit(cirq.rx(inputs[l, i])(q) for i, q in enumerate(qubits))
+        circuit += cirq.Circuit(cirq.rx(inputs[l, i])(q)
+                                for i, q in enumerate(qubits))
 
     # Last varitional layer
-    circuit += cirq.Circuit(one_qubit_rotation(q, params[n_layers, i]) for i,q in enumerate(qubits))
+    circuit += cirq.Circuit(one_qubit_rotation(q,
+                            params[n_layers, i]) for i, q in enumerate(qubits))
 
     return circuit, list(params.flat), list(inputs.flat)
+
 
 class ReUploadingPQC(tf.keras.layers.Layer):
     """
@@ -70,12 +77,15 @@ class ReUploadingPQC(tf.keras.layers.Layer):
         self.n_qubits = len(qubits)
         self.seed = seed
 
-        circuit, theta_symbols, input_symbols = generate_circuit(qubits, n_layers)
-        
+        circuit, theta_symbols, input_symbols = generate_circuit(
+            qubits, n_layers)
+
         q_delta = 0.01
-        theta_init = tf.random_normal_initializer(mean=0.0, stddev=q_delta*np.pi, seed=self.seed)
+        theta_init = tf.random_normal_initializer(
+            mean=0.0, stddev=q_delta*np.pi, seed=self.seed)
         self.theta = tf.Variable(
-            initial_value=theta_init(shape=(1, len(theta_symbols)), dtype="float32"),
+            initial_value=theta_init(
+                shape=(1, len(theta_symbols)), dtype="float32"),
             trainable=True, name="thetas"
         )
 
@@ -84,7 +94,7 @@ class ReUploadingPQC(tf.keras.layers.Layer):
         self.indices = tf.constant([symbols.index(a) for a in sorted(symbols)])
 
         self.empty_circuit = tfq.convert_to_tensor([cirq.Circuit()])
-        self.computation_layer = tfq.layers.ControlledPQC(circuit, observables)        
+        self.computation_layer = tfq.layers.ControlledPQC(circuit, observables)
 
     def call(self, inputs):
         batch_dim = tf.gather(tf.shape(inputs), 0)
