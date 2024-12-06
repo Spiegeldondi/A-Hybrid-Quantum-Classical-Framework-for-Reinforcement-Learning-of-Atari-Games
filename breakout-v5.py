@@ -1,3 +1,5 @@
+# Portions of this code are adapted from "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow" by Aurélien Géron.
+
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
