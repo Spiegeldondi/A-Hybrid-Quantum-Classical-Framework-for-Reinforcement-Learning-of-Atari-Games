@@ -25,7 +25,7 @@ from tf_agents.environments import suite_atari, suite_gym
 from tf_agents.environments.atari_wrappers import FrameStack4
 from tf_agents.environments.tf_py_environment import TFPyEnvironment
 from tf_agents.networks import sequential
-from tf_agents.agents.dqn.dqn_agent import DqnAgent
+from custom_agents.custom_dqn_agent import CustomDqnAgent as DqnAgent
 from tf_agents.replay_buffers import tf_uniform_replay_buffer
 from tf_agents.metrics import tf_metrics
 from tf_agents.eval.metric_utils import log_metrics
