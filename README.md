@@ -1,6 +1,21 @@
 # A-Hybrid-Quantum-Classical-Framework-for-Reinforcement-Learning-of-Atari-Games
 This repo explores the capabilities of hybrid quantum-classical models based on variational quantum algorithms (VQAs) in high dimensional reinforcement learning (RL) environments such as the Atari 2600 classics Pong and Breakout.
 
+## Installation Guide
+
+Follow these steps to set up the project on an Ubuntu-based system.
+
+### 1. System Requirements
+- **Operating System**: Ubuntu 20.04+ (or equivalent Linux distribution)
+- **Python Version**: Python 3.8 (required for compatibility)
+
+---
+
+### 2. Install System Dependencies
+```bash
+sudo apt update
+sudo apt install -y software-properties-common
+
 ## Acknowledgments
 
 This project incorporates code from the following sources:
