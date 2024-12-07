@@ -18,6 +18,45 @@ Follow these steps to set up the project on an Ubuntu-based system.
 sudo apt update
 sudo apt install -y software-properties-common
 ```
+
+---
+
+### 3. Install Python 3.8 and Virtual Environment Tools
+```bash
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt install -y python3.8 python3.8-venv python3.8-distutils
+```
+
+---
+
+### 4. Create and Activate a Virtual Environment
+```bash
+python3.8 -m venv myenv
+source myenv/bin/activate
+```
+
+---
+
+### 5. Install Build Tools
+```bash
+sudo apt install -y cmake make gcc g++ python3.8-dev
+```
+
+---
+
+### 6. Install Required Libraries
+```bash
+sudo apt install -y zlib1g-dev libgl1
+```
+
+---
+
+### 7. Install Python Dependencies
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
 ---
 
 ## Acknowledgments
