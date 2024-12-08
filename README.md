@@ -70,7 +70,8 @@ or for Pong:
 ```bash
 python pong-v3.py [model] [activation] [lr1] [lr2] [lr3] [lr4] [lr5] [--lr6 LR6] --n_qubits N_QUBITS --n_layers N_LAYERS --scaling SCALING --id ID --seed SEED [--bottleneck {0,1}] [--path PATH]
 ```
-The following table explains the arguments.
+
+---
 
 ### Arguments Overview
 
