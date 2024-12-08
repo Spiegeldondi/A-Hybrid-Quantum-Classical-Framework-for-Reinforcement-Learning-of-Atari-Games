@@ -96,6 +96,22 @@ python pong-v3.py [model] [activation] [lr1] [lr2] [lr3] [lr4] [lr5] [--lr6 LR6]
 
 ---
 
+### Example
+The baseline quantum model uses the following arguments.
+```bash
+python breakout-v5.py quantum linear 2.5e-4 2.5e-4 2.5e-4 2.5e-4 2.5e-4 --lr6 2.5e-4 --n_qubits 4 --n_layers 4 --scaling 0 --id 01 --seed 01
+```
+
+The baseline classical model uses the following arguments.
+```bash
+python breakout-v5.py classic linear 2.5e-4 2.5e-4 2.5e-4 2.5e-4 2.5e-4 --n_qubits 4 --n_layers 4 --scaling 0 --bottleneck 1 --id 01 --seed 01
+```
+---
+
+### Output
+
+---
+
 ## Acknowledgments
 
 This project incorporates code from the following sources:
