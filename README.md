@@ -59,7 +59,7 @@ pip install -r requirements.txt
 
 ---
 
-## ASDF
+## Running the Project
 
 ### How to run
 To execute the project, use the following command in your terminal:
