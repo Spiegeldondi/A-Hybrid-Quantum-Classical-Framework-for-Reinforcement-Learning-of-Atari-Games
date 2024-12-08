@@ -59,6 +59,37 @@ pip install -r requirements.txt
 
 ---
 
+## ASDF
+
+### How to run
+To execute the project, use the following command in your terminal:
+```bash
+python breakout-v5.py [model] [activation] [lr1] [lr2] [lr3] [lr4] [lr5] [--lr6 LR6] --n_qubits N_QUBITS --n_layers N_LAYERS --scaling SCALING --id ID --seed SEED [--bottleneck {0,1}] [--path PATH]
+```
+or for Pong:
+```bash
+python pong-v3.py [model] [activation] [lr1] [lr2] [lr3] [lr4] [lr5] [--lr6 LR6] --n_qubits N_QUBITS --n_layers N_LAYERS --scaling SCALING --id ID --seed SEED [--bottleneck {0,1}] [--path PATH]
+```
+The following table explains the arguments.
+
+### Arguments Overview
+
+| Argument            | Description                                           | Required |
+|---------------------|-------------------------------------------------------|----------|
+| `model`             | Model type: `"classic"` or `"quantum"`                | Yes      |
+| `activation`        | Activation function in pre-processing layer: `"linear"`, `"tanh"`, or `"relu"` | Yes      |
+| `lr1` - `lr5`       | Learning rates for the respective layers              | Yes      |
+| `--lr6`             | Learning rate for the post-processing layer (required if `model=quantum`) | No       |
+| `--n_qubits`        | Number of qubits in the PQC                          | Yes      |
+| `--n_layers`        | Number of layers in the PQC                         | Yes      |
+| `--scaling`         | Scaling applied to rewards                          | Yes      |
+| `--id`              | Unique 2-digit ID                                    | Yes      |
+| `--seed`            | Random seed                                          | Yes      |
+| `--bottleneck`      | Include bottleneck layer (required if `model=classic`) | No       |
+| `--path`            | Path for saving output files (default: current directory) | No       |
+
+---
+
 ## Acknowledgments
 
 This project incorporates code from the following sources:
