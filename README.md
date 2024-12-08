@@ -108,7 +108,35 @@ python breakout-v5.py classic linear 2.5e-4 2.5e-4 2.5e-4 2.5e-4 2.5e-4 --n_qubi
 ```
 ---
 
-### Output
+## Output
+When running the model, an output folder named `output-<ID>` is generated, where `<ID>` corresponds to the specified `--id` argument when executing the model (e.g., `--id 01` creates `output-01`).
+
+### Folder Structure Overview
+```perl
+output-01/
+│
+├── checkpoint/                # Stores model checkpoints at regular intervals
+│   ├── checkpoint             # Metadata for the latest checkpoint
+│   ├── ckpt-XXXX.data-00000-of-00001   # Model data file
+│   └── ckpt-XXXX.index                 # Model index file
+│
+├── layer_biases/              # Stores biases for each model layer
+│   ├── layer_<layer_idx>/
+│   │   └── layer_<layer_idx>_iter_<iteration>.npy
+│
+├── layer_outputs/             # Contains layer outputs during inference
+│   ├── layer_<layer_idx>/
+│   │   └── layer_<layer_idx>_iter_<iteration>.npy
+│
+├── layer_weights/             # Contains layer weights for each layer
+│   ├── layer_<layer_idx>/
+│   │   └── layer_<layer_idx>_iter_<iteration>.npy
+│
+├── is_last.csv                # Logs Q-values of the last time step in each episode
+├── metrics.csv                # Logs various evaluation metrics, including rewards and episode lengths
+├── rewards.csv                # Logs rewards and discounts received at each time step
+└── weight_norms.csv           # Logs the norms of the model's layer weights
+```
 
 ---
 
