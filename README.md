@@ -49,11 +49,16 @@ sudo apt install -y cmake make gcc g++ python3.8-dev
 sudo apt install -y zlib1g-dev libgl1
 ```
 
+### 7. Install Specific `pip` Version
+To avoid compatibility issues with `gym==0.19.0`, do not upgrade `pip` beyond version `23.0.1`:
+```bash
+pip install pip==23.0.1
+```
+
 ---
 
-### 7. Install Python Dependencies
+### 8. Install Python Dependencies
 ```bash
-pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
