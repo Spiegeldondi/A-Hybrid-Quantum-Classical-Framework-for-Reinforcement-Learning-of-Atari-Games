@@ -148,3 +148,4 @@ This project incorporates code from the following sources:
 
 - **[TensorFlow Quantum tutorial on quantum reinforcement learning](https://github.com/tensorflow/quantum/blob/master/docs/tutorials/quantum_reinforcement_learning.ipynb)**: Licensed under the Apache License 2.0.
 
+- **[TF-Agents: A Library for Reinforcement Learning in TensorFlow](https://github.com/tensorflow/agents)**: Licensed under the Apache License 2.0.
