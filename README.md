@@ -62,6 +62,15 @@ pip install pip==23.0.1
 pip install -r requirements.txt
 ```
 
+### Troubleshooting
+On systems with recent versions of GCC (especially GCC 12 or 13), building atari-py==0.2.6 may fail with internal compiler errors (e.g., segmentation faults) during the C++ build process. This is due to incompatibilities between the legacy atari-py codebase and newer compilers.
+Solution: Install and switch to GCC 10, which is known to work:
+```
+sudo apt install gcc-10 g++-10
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-10 100
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 100
+```
+
 ---
 
 ## Running the Project
